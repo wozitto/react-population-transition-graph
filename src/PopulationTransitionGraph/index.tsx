@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { PrefectureCheckBox } from './components/PrefectureCheckBox'
 
 const END_POINT = 'https://opendata.resas-portal.go.jp'
 const KEY = { 'X-API-KEY': '2wzD3L1jmEIFcmF2LdkOTNLgdhlFHdpkrwXtOr2c' }
@@ -28,7 +29,13 @@ export const PopulationTransitionGraph = () => {
   return (
     <>
       {prefectures.map((prefecture) => {
-        return <p key={prefecture.prefCode}>{prefecture.prefName}</p>
+        return (
+          <PrefectureCheckBox
+            key={prefecture.prefCode}
+            prefCode={prefecture.prefCode}
+            prefName={prefecture.prefName}
+          />
+        )
       })}
     </>
   )

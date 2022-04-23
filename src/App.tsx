@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { PopulationTransitionGraph } from './PopulationTransitionGraph'
+import { PopulationTransitionGraph } from './PopulationTransitionGraph/index'
 
 function App() {
   return (
