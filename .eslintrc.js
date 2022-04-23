@@ -8,6 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
+  ignorePatterns: ['.eslintrc.js'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -27,6 +28,5 @@ module.exports = {
     'no-extra-semi': 'error',
     'no-unexpected-multiline': 'error',
     'no-unreachable': 'error',
-    'react/react-in-jsx-scope': 'off',
   },
 }
