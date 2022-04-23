@@ -16,8 +16,7 @@ type Props = {
   state: Array<STORE>
 }
 
-export const Charts = ({ state }: Props): React.ReactElement => {
-  console.log(state)
+export const Charts = React.memo(({ state }: Props): React.ReactElement => {
   const prefectures = [
     '北海道',
     '青森県',
@@ -67,45 +66,6 @@ export const Charts = ({ state }: Props): React.ReactElement => {
     '鹿児島県',
     '沖縄県',
   ]
-  const data = [
-    { name: 1960, 人口: 400 },
-    { name: 1965, 人口: 300 },
-    { name: 1970, 人口: 340 },
-    { name: 1975, 人口: 300 },
-    { name: 1980, 人口: 20 },
-    { name: 1985, 人口: 250 },
-    { name: 1990, 人口: 250 },
-    { name: 1995, 人口: 250 },
-    { name: 2000, 人口: 250 },
-    { name: 2005, 人口: 250 },
-    { name: 2010, 人口: 250 },
-  ]
-  const data2 = [
-    { name: 1960, 人口: 400 },
-    { name: 1965, 人口: 300 },
-    { name: 1970, 人口: 330 },
-    { name: 1975, 人口: 200 },
-    { name: 1980, 人口: 200 },
-    { name: 1985, 人口: 550 },
-    { name: 1990, 人口: 650 },
-    { name: 1995, 人口: 850 },
-    { name: 2000, 人口: 350 },
-    { name: 2005, 人口: 250 },
-    { name: 2010, 人口: 250 },
-  ]
-  const data3 = [
-    { name: 1960, 人口: 500, test: 5000 },
-    { name: 1965, 人口: 600, test: 6000 },
-    { name: 1970, 人口: 530, test: 5030 },
-    { name: 1975, 人口: 500, test: 5000 },
-    { name: 1980, 人口: 300, test: 3000 },
-    { name: 1985, 人口: 550, test: 5050 },
-    { name: 1990, 人口: 650, test: 6050 },
-    { name: 1995, 人口: 850, test: 8050 },
-    { name: 2000, 人口: 850, test: 8050 },
-    { name: 2005, 人口: 250, test: 2050 },
-    { name: 2010, 人口: 250, test: 2050 },
-  ]
   return (
     <div style={{ width: '85%', height: '600px', margin: '0 auto' }}>
       <ResponsiveContainer height="80%">
@@ -139,4 +99,4 @@ export const Charts = ({ state }: Props): React.ReactElement => {
       </ResponsiveContainer>
     </div>
   )
-}
+})

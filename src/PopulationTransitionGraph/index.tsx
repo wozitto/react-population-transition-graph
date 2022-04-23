@@ -3,6 +3,7 @@ import { reducer } from './reducer'
 import axios from 'axios'
 import { PrefectureCheckBox } from './components/PrefectureCheckBox'
 import { Charts } from './components/Charts'
+import styled from 'styled-components'
 
 export const END_POINT = 'https://opendata.resas-portal.go.jp'
 export const KEY = { 'X-API-KEY': '2wzD3L1jmEIFcmF2LdkOTNLgdhlFHdpkrwXtOr2c' }
@@ -31,18 +32,32 @@ export const PopulationTransitionGraph = (): React.ReactElement => {
 
   return (
     <>
-      {prefectures.map((prefecture) => {
-        return (
-          <PrefectureCheckBox
-            key={prefecture.prefCode}
-            state={state}
-            dispatch={dispatch}
-            prefCode={prefecture.prefCode}
-            prefName={prefecture.prefName}
-          />
-        )
-      })}
+      <Header>POPULATION-TRANSITION-APP</Header>
+      <PrefectureCheckBoxiesWrapper>
+        {prefectures.map((prefecture) => {
+          return (
+            <PrefectureCheckBox
+              key={prefecture.prefCode}
+              state={state}
+              dispatch={dispatch}
+              prefCode={prefecture.prefCode}
+              prefName={prefecture.prefName}
+            />
+          )
+        })}
+      </PrefectureCheckBoxiesWrapper>
       <Charts state={state} />
     </>
   )
 }
+
+const Header = styled.h1`
+  margin: 0;
+  color: #fff;
+  background-color: #0969da;
+`
+
+const PrefectureCheckBoxiesWrapper = styled.div`
+  width: 80%;
+  margin: 0 auto;
+`

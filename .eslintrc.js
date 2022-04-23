@@ -28,5 +28,6 @@ module.exports = {
     'no-extra-semi': 'error',
     'no-unexpected-multiline': 'error',
     'no-unreachable': 'error',
+    'react/display-name': 'off',
   },
 }
