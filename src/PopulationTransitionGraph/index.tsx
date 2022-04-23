@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useReducer, useState, useEffect } from 'react'
+import { reducer } from './reducer'
 import axios from 'axios'
 import { PrefectureCheckBox } from './components/PrefectureCheckBox'
+import { Charts } from './components/Charts'
 
-const END_POINT = 'https://opendata.resas-portal.go.jp'
-const KEY = { 'X-API-KEY': '2wzD3L1jmEIFcmF2LdkOTNLgdhlFHdpkrwXtOr2c' }
+export const END_POINT = 'https://opendata.resas-portal.go.jp'
+export const KEY = { 'X-API-KEY': '2wzD3L1jmEIFcmF2LdkOTNLgdhlFHdpkrwXtOr2c' }
 
 type Prefecture = {
   prefCode: number
   prefName: string
 }
 
-export const PopulationTransitionGraph = () => {
-  const [prefectures, setPrefectures] = useState<[Prefecture]>([
+export const PopulationTransitionGraph = (): React.ReactElement => {
+  const initialState: any[] = []
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const [prefectures, setPrefectures] = useState<Prefecture[]>([
     { prefCode: 0, prefName: '' },
   ])
 
@@ -21,7 +25,6 @@ export const PopulationTransitionGraph = () => {
         headers: KEY,
       })
       .then((response) => {
-        console.log(response.data.result)
         setPrefectures(response.data.result)
       })
   }, [])
@@ -32,11 +35,14 @@ export const PopulationTransitionGraph = () => {
         return (
           <PrefectureCheckBox
             key={prefecture.prefCode}
+            state={state}
+            dispatch={dispatch}
             prefCode={prefecture.prefCode}
             prefName={prefecture.prefName}
           />
         )
       })}
+      <Charts state={state} />
     </>
   )
 }
