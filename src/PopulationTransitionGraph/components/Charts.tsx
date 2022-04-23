@@ -109,32 +109,11 @@ export const Charts = ({ state }: Props): React.ReactElement => {
   return (
     <div style={{ width: '85%', height: '600px', margin: '0 auto' }}>
       <ResponsiveContainer height="80%">
-        {/* <LineChart margin={{ left: 50 }}>
-          <XAxis dataKey="name" />
-          <YAxis />
-          {state.map((pref) => {
-            return (
-              <Line
-                data={pref}
-                type="monotone"
-                dataKey="人口"
-                stroke="#8884d8"
-                key={pref.人口}
-              />
-            )
-          })}
-          <Line data={data} type="monotone" dataKey="人口" stroke="#8884d8" />
-          <Line data={data2} type="monotone" dataKey="人口" stroke="#000" />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-        </LineChart> */}
         <LineChart margin={{ left: 50, right: 50 }}>
           <XAxis type="number" dataKey="year" domain={['auto', 'auto']} />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
-          <Legend name="test" />
-          {/* {console.log(prefectures[state[1].prefCode - 1])} */}
           {state.map(
             (
               prefecture: Array<{
@@ -143,12 +122,19 @@ export const Charts = ({ state }: Props): React.ReactElement => {
                 population: number
               }>,
             ) => {
-              return <Line key={prefecture[0].population} type="monotone" data={prefecture} dataKey="population" stroke={randomcolor()} name={prefectures[prefecture[0].prefCode - 1]} />
+              return (
+                <Line
+                  key={prefecture[0].population}
+                  type="monotone"
+                  data={prefecture}
+                  dataKey="population"
+                  stroke={randomcolor()}
+                  name={prefectures[prefecture[0].prefCode - 1]}
+                />
+              )
             },
           )}
-          {/* <Line type="monotone" data={data} dataKey="人口" stroke="#8884d8" />
-          <Line type="monotone" data={data2} dataKey="人口" stroke="#82ca9d" />
-          <Line type="monotone" data={data3} dataKey="人口" stroke="#82ca9d" /> */}
+          <Legend />
         </LineChart>
       </ResponsiveContainer>
     </div>

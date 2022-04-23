@@ -1,11 +1,15 @@
 import React, { useState, Dispatch } from 'react'
 import axios from 'axios'
 import { END_POINT, KEY } from '../index'
-import { STORE, ACTION } from '../reducer'
+import {
+  STORE,
+  ADD_POPULATION_DATA_ACTION,
+  REMOVE_POPULATION_DATA_ACTION,
+} from '../reducer'
 
 type Props = {
-  state: STORE
-  dispatch: Dispatch<ACTION>
+  state: Array<STORE>
+  dispatch: Dispatch<ADD_POPULATION_DATA_ACTION | REMOVE_POPULATION_DATA_ACTION>
   prefCode: number
   prefName: string
 }
@@ -19,7 +23,13 @@ export const PrefectureCheckBox = ({
   const [isChecked, setIsChecked] = useState(false)
   const handleOnChange = (prefCode: number) => {
     if (isChecked) {
-      console.log('remove')
+      const newState = state.filter((el) => {
+        return el[0].prefCode != prefCode
+      })
+      dispatch({
+        type: 'REMOVE_POPULATION_DATA',
+        newState,
+      })
     } else {
       axios
         .get(
