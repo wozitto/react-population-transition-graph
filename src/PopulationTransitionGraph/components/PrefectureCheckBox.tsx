@@ -17,7 +17,7 @@ type Props = {
 export const PrefectureCheckBox = React.memo(
   ({ state, dispatch, prefCode, prefName }: Props): React.ReactElement => {
     const [isChecked, setIsChecked] = useState(false)
-    const handleOnChange = (prefCode: number) => {
+    const handleOnChange = useCallback((prefCode: number) => {
       if (isChecked) {
         const newState = state.filter((el) => {
           return el[0].prefCode != prefCode
@@ -50,7 +50,7 @@ export const PrefectureCheckBox = React.memo(
           })
       }
       setIsChecked(!isChecked)
-    }
+    }, [prefCode, isChecked])
     return (
       <label style={{ marginRight: '8px' }}>
         <input

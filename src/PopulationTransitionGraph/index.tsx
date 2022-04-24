@@ -59,5 +59,5 @@ const Header = styled.h1`
 
 const PrefectureCheckBoxiesWrapper = styled.div`
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 24px auto;
 `
