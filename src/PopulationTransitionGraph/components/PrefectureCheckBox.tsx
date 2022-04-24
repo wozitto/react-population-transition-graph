@@ -8,7 +8,7 @@ import {
 } from '../reducer'
 
 type Props = {
-  state: Array<STORE>
+  state: STORE
   dispatch: Dispatch<ADD_POPULATION_DATA_ACTION | REMOVE_POPULATION_DATA_ACTION>
   prefCode: number
   prefName: string

@@ -1,5 +1,5 @@
 import React, { useReducer, useState, useEffect } from 'react'
-import { reducer } from './reducer'
+import { reducer, STORE } from './reducer'
 import axios from 'axios'
 import { PrefectureCheckBox } from './components/PrefectureCheckBox'
 import { Charts } from './components/Charts'
@@ -14,7 +14,7 @@ type Prefecture = {
 }
 
 export const PopulationTransitionGraph = (): React.ReactElement => {
-  const initialState: any[] = []
+  const initialState: STORE = []
   const [state, dispatch] = useReducer(reducer, initialState)
   const [prefectures, setPrefectures] = useState<Prefecture[]>([
     { prefCode: 0, prefName: '' },

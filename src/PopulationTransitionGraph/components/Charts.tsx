@@ -13,7 +13,7 @@ import {
 import randomcolor from 'randomcolor'
 
 type Props = {
-  state: Array<STORE>
+  state: STORE
 }
 
 export const Charts = React.memo(({ state }: Props): React.ReactElement => {

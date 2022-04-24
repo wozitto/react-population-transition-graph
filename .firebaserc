@@ -1,0 +1,8 @@
+{
+  "hosting": {
+    "public": "build"
+  },
+  "projects": {
+    "default": "population-transition-gr-2ec26"
+  }
+}

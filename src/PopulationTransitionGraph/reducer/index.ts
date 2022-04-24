@@ -3,18 +3,19 @@ export type PopulationData = {
   year: number
   population: number
 }
-export type STORE = Array<PopulationData>
+export type PopulationDatas = Array<PopulationData>
+export type STORE = Array<PopulationDatas>
 export type ADD_POPULATION_DATA_ACTION = {
   type: 'ADD_POPULATION_DATA'
-  newData: Array<PopulationData>
+  newData: PopulationDatas
 }
 export type REMOVE_POPULATION_DATA_ACTION = {
   type: 'REMOVE_POPULATION_DATA'
-  newState: Array<STORE>
+  newState: STORE
 }
 
 export const reducer = (
-  state: any,
+  state: STORE,
   action: ADD_POPULATION_DATA_ACTION | REMOVE_POPULATION_DATA_ACTION,
 ) => {
   switch (action.type) {
