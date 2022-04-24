@@ -105,9 +105,10 @@ export const Charts = React.memo(({ state }: Props): React.ReactElement => {
 
 const ChartsWrapper = styled.div`
   width: 95%;
-  height: 600px;
+  height: 400px;
   margin: 0 auto;
   @media ${devices.desktop} {
     width: 85%;
+    height: 520px
   }
 `
