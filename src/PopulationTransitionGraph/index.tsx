@@ -4,6 +4,7 @@ import axios from 'axios'
 import { PrefectureCheckBox } from './components/PrefectureCheckBox'
 import { Charts } from './components/Charts'
 import styled from 'styled-components'
+import { devices } from '../devices'
 
 export const END_POINT = 'https://opendata.resas-portal.go.jp'
 export const KEY = { 'X-API-KEY': '2wzD3L1jmEIFcmF2LdkOTNLgdhlFHdpkrwXtOr2c' }
@@ -58,6 +59,9 @@ const Header = styled.h1`
 `
 
 const PrefectureCheckBoxiesWrapper = styled.div`
-  width: 80%;
+  width: 95%;
   margin: 0 auto 24px auto;
+  @media ${devices.desktop} {
+    width: 80%;
+  }
 `

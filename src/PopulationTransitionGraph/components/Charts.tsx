@@ -11,6 +11,8 @@ import {
   Legend,
 } from 'recharts'
 import randomcolor from 'randomcolor'
+import styled from 'styled-components'
+import { devices } from '../../devices'
 
 type Props = {
   state: STORE
@@ -67,9 +69,9 @@ export const Charts = React.memo(({ state }: Props): React.ReactElement => {
     '沖縄県',
   ]
   return (
-    <div style={{ width: '85%', height: '600px', margin: '0 auto' }}>
-      <ResponsiveContainer height="80%">
-        <LineChart margin={{ left: 50, right: 50 }}>
+    <ChartsWrapper>
+      <ResponsiveContainer>
+        <LineChart margin={{ left: 32}}>
           <XAxis type="number" dataKey="year" domain={['auto', 'auto']} />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
@@ -97,6 +99,15 @@ export const Charts = React.memo(({ state }: Props): React.ReactElement => {
           <Legend />
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    </ChartsWrapper>
   )
 })
+
+const ChartsWrapper = styled.div`
+  width: 95%;
+  height: 600px;
+  margin: 0 auto;
+  @media ${devices.desktop} {
+    width: 85%;
+  }
+`
