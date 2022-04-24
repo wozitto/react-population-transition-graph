@@ -71,7 +71,7 @@ export const Charts = React.memo(({ state }: Props): React.ReactElement => {
   return (
     <ChartsWrapper>
       <ResponsiveContainer>
-        <LineChart margin={{ left: 32}}>
+        <LineChart margin={{ left: 32 }}>
           <XAxis type="number" dataKey="year" domain={['auto', 'auto']} />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
@@ -109,6 +109,6 @@ const ChartsWrapper = styled.div`
   margin: 0 auto;
   @media ${devices.desktop} {
     width: 85%;
-    height: 520px
+    height: 520px;
   }
 `
