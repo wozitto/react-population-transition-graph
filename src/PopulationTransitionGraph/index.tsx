@@ -38,9 +38,8 @@ export const PopulationTransitionGraph = (): React.ReactElement => {
         {prefectures.map((prefecture) => {
           return (
             <PrefectureCheckBox
-              key={prefecture.prefCode}
-              state={state}
               dispatch={dispatch}
+              key={prefecture.prefCode}
               prefCode={prefecture.prefCode}
               prefName={prefecture.prefName}
             />

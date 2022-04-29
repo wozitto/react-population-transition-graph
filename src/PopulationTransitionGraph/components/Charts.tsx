@@ -1,5 +1,5 @@
 import React from 'react'
-import { STORE } from '../reducer'
+import { STORE, PopulationDatas } from '../reducer'
 import {
   ResponsiveContainer,
   LineChart,
@@ -76,26 +76,19 @@ export const Charts = React.memo(({ state }: Props): React.ReactElement => {
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
-          {state.map(
-            (
-              prefecture: Array<{
-                prefCode: number
-                year: number
-                population: number
-              }>,
-            ) => {
-              return (
-                <Line
-                  key={prefecture[0].population}
-                  type="monotone"
-                  data={prefecture}
-                  dataKey="population"
-                  stroke={randomcolor()}
-                  name={prefectures[prefecture[0].prefCode - 1]}
-                />
-              )
-            },
-          )}
+          {state.map((prefecture: PopulationDatas) => {
+            console.log({ prefecture })
+            return (
+              <Line
+                key={prefecture[0].population}
+                type="monotone"
+                data={prefecture}
+                dataKey="population"
+                stroke={randomcolor()}
+                name={prefectures[prefecture[0].prefCode - 1]}
+              />
+            )
+          })}
           <Legend />
         </LineChart>
       </ResponsiveContainer>

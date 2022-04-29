@@ -11,7 +11,7 @@ export type ADD_POPULATION_DATA_ACTION = {
 }
 export type REMOVE_POPULATION_DATA_ACTION = {
   type: 'REMOVE_POPULATION_DATA'
-  newState: STORE
+  prefCode: number
 }
 
 export const reducer = (
@@ -22,6 +22,6 @@ export const reducer = (
     case 'ADD_POPULATION_DATA':
       return [...state, action.newData]
     case 'REMOVE_POPULATION_DATA':
-      return [...action.newState]
+      return [...state.filter((el) => el[0].prefCode != action.prefCode)]
   }
 }

@@ -1,30 +1,25 @@
-import React, { useState, Dispatch, useCallback } from 'react'
+import React, { useState, Dispatch } from 'react'
 import axios from 'axios'
 import { END_POINT, KEY } from '../index'
 import {
-  STORE,
   ADD_POPULATION_DATA_ACTION,
   REMOVE_POPULATION_DATA_ACTION,
 } from '../reducer'
 
 type Props = {
-  state: STORE
   dispatch: Dispatch<ADD_POPULATION_DATA_ACTION | REMOVE_POPULATION_DATA_ACTION>
   prefCode: number
   prefName: string
 }
 
 export const PrefectureCheckBox = React.memo(
-  ({ state, dispatch, prefCode, prefName }: Props): React.ReactElement => {
+  ({ dispatch, prefCode, prefName }: Props): React.ReactElement => {
     const [isChecked, setIsChecked] = useState(false)
     const handleOnChange = (prefCode: number) => {
       if (isChecked) {
-        const newState = state.filter((el) => {
-          return el[0].prefCode != prefCode
-        })
         dispatch({
           type: 'REMOVE_POPULATION_DATA',
-          newState,
+          prefCode,
         })
       } else {
         axios
